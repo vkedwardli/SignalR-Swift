@@ -9,6 +9,7 @@
 import Foundation
 
 public class Subscription {
+    // Add comment
     var handler: (([Any]) -> ())?
 
     init() {
