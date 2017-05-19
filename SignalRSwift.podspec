@@ -67,5 +67,6 @@ Pod::Spec.new do |s|
   s.dependency "Alamofire", "~> 4.2.0"
   s.dependency "SwiftWebSocket"
   s.dependency "AlamofireObjectMapper", "~> 4.0"
+  s.dependency "ProtocolBuffers-Swift", "~> 3.0.16"
 
 end
