@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
 
-    private var hubs = [String: HubProxy]()
+    private var hubs = [String: ProtoBufHubProxy]()
     private var callbacks = [String: HubConnectionHubResultClosure]()
     private var callbackId = 0
 
@@ -30,15 +31,15 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
         super.init(withUrl: HubConnection.getUrl(url: url, useDefault: useDefault), queryString: queryString)
     }
 
-    public func createHubProxy(hubName: String) -> HubProxy? {
+    public func createHubProxy(hubName: String) -> ProtoBufHubProxy? {
         if self.state != .disconnected {
             NSException.raise(.internalInconsistencyException, format: NSLocalizedString("Proxies cannot be added after the connection has been started.", comment: "proxy added after connection starts exception"), arguments: getVaList(["nil"]))
         }
 
-        var proxy: HubProxy? = nil
+        var proxy: ProtoBufHubProxy? = nil
 
         if self.hubs[hubName.lowercased()] == nil {
-            proxy = HubProxy(connection: self, hubName: hubName.lowercased())
+            proxy = ProtoBufHubProxy(connection: self, hubName: hubName.lowercased())
             self.hubs[hubName.lowercased()] = proxy
         }
 
@@ -97,19 +98,15 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
     // MARK: - Received Data
 
     override public func didReceiveData(data: Any) {
-        if let dict = data as? [String: Any] {
-            if dict["I"] != nil, let result = HubResult(JSON: dict), let callback = self.callbacks[result.id!] {
-                callback(result)
-            } else if let invocation = HubInvocation(JSON: dict) {
-                if let hubProxy = self.hubs[invocation.hub.lowercased()] {
-                    if let state = invocation.state {
-                        for key in state.keys {
-                            hubProxy.state[key] = state[key]
-                        }
-                    }
-                    hubProxy.invokeEvent(eventName: invocation.method, withArgs: invocation.args)
+        if let base64String = data as? String {
+            if let encodedData = Data(base64Encoded: base64String),
+                let message = try? SignalRMessage.parseFrom(data: encodedData),
+                let method = message.m,
+                let argsString = message.d,
+                let argsDict = JSON(parseJSON: argsString).dictionaryObject {
+                for hub in self.hubs {
+                    hub.value.invokeEvent(eventName: method, withArgs: argsDict)
                 }
-
                 super.didReceiveData(data: data)
             }
         }

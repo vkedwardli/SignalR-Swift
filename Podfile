@@ -10,6 +10,7 @@ target 'SignalRSwift' do
   pod 'SwiftWebSocket'
   pod 'AlamofireObjectMapper', '~> 4.0'
   pod 'ProtocolBuffers-Swift', '~> 3.0.16'
+	pod 'SwiftyJSON', '~> 3.1'
 
   target 'SignalR-SwiftTests' do
     inherit! :search_paths
