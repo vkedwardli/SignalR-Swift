@@ -12,7 +12,7 @@ public class ProtoBufHubProxy: ProtoBufHubProxyProtocol {
 
     public var state = [String: Any]()
 
-    private var connection: HubConnectionProtocol!
+    private weak var connection: HubConnectionProtocol?
     private var hubName: String?
     private var subscriptions = [String: ProtoBufSubscription]()
 
