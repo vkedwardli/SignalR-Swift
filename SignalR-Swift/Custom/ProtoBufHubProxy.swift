@@ -19,6 +19,7 @@ public class ProtoBufHubProxy: ProtoBufHubProxyProtocol {
     // MARK: - Init
 
     public init(connection: HubConnectionProtocol, hubName: String) {
+        print("🐣 \(String(describing: type(of:self)))")
         self.connection = connection
         self.hubName = hubName
     }
@@ -45,5 +46,9 @@ public class ProtoBufHubProxy: ProtoBufHubProxyProtocol {
         if let subscription = self.subscriptions[eventName], let handler = subscription.handler {
             handler(args)
         }
+    }
+    
+    deinit {
+        print("💀 \(String(describing: type(of:self)))")
     }
 }

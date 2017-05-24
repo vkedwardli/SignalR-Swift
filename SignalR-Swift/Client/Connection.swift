@@ -80,11 +80,13 @@ public class Connection: ConnectionProtocol {
     }
 
     public init(withUrl url: String) {
+        print("🐣 \(String(describing: type(of:self)))")
         self.url = url.hasSuffix("/") ? url : url.appending("/")
         self.queryString = nil
     }
 
     public init(withUrl url: String, queryString: [String: String]?) {
+        print("🐣 \(String(describing: type(of:self)))")
         self.url = url.hasSuffix("/") ? url : url.appending("/")
         self.queryString = queryString
     }
@@ -399,6 +401,7 @@ public class Connection: ConnectionProtocol {
     }
     
     deinit {
+        print("💀 \(String(describing: type(of:self)))")
         if self.state != .disconnected {
             self.stop()
         }
