@@ -45,6 +45,10 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
 
         return proxy
     }
+    
+    public func hubProxy(withName hubName:String) -> ProtoBufHubProxy? {
+        return self.hubs[hubName.lowercased()]
+    }
 
     public func registerCallback(callback: @escaping HubConnectionHubResultClosure) -> String {
         let newId = String(self.callbackId)
