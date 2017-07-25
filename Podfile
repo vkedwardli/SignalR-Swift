@@ -9,7 +9,7 @@ target 'SignalRSwift' do
   pod 'Alamofire', '~> 4.2.0'
   pod 'SwiftWebSocket'
   pod 'AlamofireObjectMapper', '~> 4.0'
-  pod 'ProtocolBuffers-Swift', '~> 3.0.16'
+  pod 'ProtocolBuffers-Swift', '3.0.16'
 	pod 'SwiftyJSON', '~> 3.1'
 
   target 'SignalR-SwiftTests' do
