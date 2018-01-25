@@ -66,5 +66,8 @@ Pod::Spec.new do |s|
 
   s.dependency "Alamofire", "~> 4.2"
   s.dependency "Starscream", "~> 3.0"
+  s.dependency 'ProtocolBuffers-Swift', '~> 4.0'
+  s.dependency "SwiftyJSON", "~> 3.1"
+
 
 end

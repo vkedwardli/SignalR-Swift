@@ -8,6 +8,12 @@
 
 import Foundation
 
+public typealias ProtoBufSubscription = ([String: Any]) -> ()
+
 protocol ProtoBufHubProxyProtocol {
-    func on(eventName: String?, handler: @escaping ((_ args: [String: Any]) -> ())) -> ProtoBufSubscription?
+    func on(eventName: String, handler: @escaping ProtoBufSubscription) -> ProtoBufSubscription?
+    
+    func invoke(method: String, withArgs args: [String: Any])
+
+    func invoke(method: String, withArgs args: [String: Any], completionHandler: ((_ response: Any?, _ error: Error?) -> ())?)
 }

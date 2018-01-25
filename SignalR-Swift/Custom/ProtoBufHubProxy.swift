@@ -9,7 +9,7 @@
 import Foundation
 
 public class ProtoBufHubProxy: ProtoBufHubProxyProtocol {
-
+    
     public var state = [String: Any]()
 
     private weak var connection: HubConnectionProtocol?
@@ -25,28 +25,27 @@ public class ProtoBufHubProxy: ProtoBufHubProxyProtocol {
     }
 
     // MARK: - Subscribe
-
-    public func on(eventName: String?, handler: @escaping ((_ args: [String: Any]) -> ())) -> ProtoBufSubscription? {
-        guard eventName != nil && !eventName!.isEmpty else {
+    
+    public func on(eventName: String, handler: @escaping ProtoBufSubscription) -> ProtoBufSubscription? {
+        guard !eventName.isEmpty else {
             NSException.raise(.invalidArgumentException, format: NSLocalizedString("Argument eventName is null", comment: "null event name exception"), arguments: getVaList(["nil"]))
             return nil
         }
-
-        var subscription = self.subscriptions[eventName!]
-        if subscription == nil {
-            subscription = ProtoBufSubscription()
-            subscription?.handler = handler
-            self.subscriptions[eventName!] = subscription
-        }
-
-        return subscription!
+        
+        return self.subscriptions[eventName] ?? self.subscriptions.updateValue(handler, forKey: eventName) ?? handler
     }
-
+    
     public func invokeEvent(eventName: String, withArgs args: [String: Any]) {
-        if let subscription = self.subscriptions[eventName], let handler = subscription.handler {
-            handler(args)
+        if let subscription = self.subscriptions[eventName] {
+            subscription(args)
         }
     }
+    
+    // MARK: - Publish
+    
+    public func invoke(method: String, withArgs args: [String : Any]) {}
+    
+    public func invoke(method: String, withArgs args: [String : Any], completionHandler: ((Any?, Error?) -> ())?) {}
     
     deinit {
         print("💀 \(String(describing: type(of:self)))")

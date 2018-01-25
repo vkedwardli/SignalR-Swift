@@ -11,6 +11,10 @@
 		563B87161F1FA11100D75CEF /* ServerSentEventsTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B87151F1FA11100D75CEF /* ServerSentEventsTransport.swift */; };
 		568A77191F223CB2004F5D1C /* ChunkBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A77181F223CB2004F5D1C /* ChunkBuffer.swift */; };
 		568A771B1F223CF0004F5D1C /* ServerSentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A771A1F223CF0004F5D1C /* ServerSentEvent.swift */; };
+		84FF88722019CD6500AFB4E4 /* ProtoBufHubProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF886D2019CD6500AFB4E4 /* ProtoBufHubProxy.swift */; };
+		84FF88732019CD6500AFB4E4 /* SignalRMessage.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF886E2019CD6500AFB4E4 /* SignalRMessage.proto.swift */; };
+		84FF88742019CD6500AFB4E4 /* ProtoBufHubConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF886F2019CD6500AFB4E4 /* ProtoBufHubConnection.swift */; };
+		84FF88762019CD6500AFB4E4 /* ProtoBufHubProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FF88712019CD6500AFB4E4 /* ProtoBufHubProxyProtocol.swift */; };
 		AA049197DB8438E88C7B3D5D /* Pods_SignalR_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291C54976E982A542BA4B4C3 /* Pods_SignalR_SwiftTests.framework */; };
 		C91154631E24113F007C0DD9 /* WebSocketTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154621E24113F007C0DD9 /* WebSocketTransport.swift */; };
 		C91154661E241239007C0DD9 /* WebSocketConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154651E241239007C0DD9 /* WebSocketConnectionInfo.swift */; };
@@ -59,6 +63,10 @@
 		568A77181F223CB2004F5D1C /* ChunkBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChunkBuffer.swift; path = "SignalR-Swift/Transports/ServerSentEvents/ChunkBuffer.swift"; sourceTree = SOURCE_ROOT; };
 		568A771A1F223CF0004F5D1C /* ServerSentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerSentEvent.swift; path = "SignalR-Swift/Transports/ServerSentEvents/ServerSentEvent.swift"; sourceTree = SOURCE_ROOT; };
 		65B59CFA9FAF15B46BDCDEC1 /* Pods-SignalR-SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalR-SwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalR-SwiftTests/Pods-SignalR-SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		84FF886D2019CD6500AFB4E4 /* ProtoBufHubProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtoBufHubProxy.swift; sourceTree = "<group>"; };
+		84FF886E2019CD6500AFB4E4 /* SignalRMessage.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalRMessage.proto.swift; sourceTree = "<group>"; };
+		84FF886F2019CD6500AFB4E4 /* ProtoBufHubConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtoBufHubConnection.swift; sourceTree = "<group>"; };
+		84FF88712019CD6500AFB4E4 /* ProtoBufHubProxyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtoBufHubProxyProtocol.swift; sourceTree = "<group>"; };
 		B5E080DF752A22D635CE38CF /* Pods-SignalR-SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalR-SwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalR-SwiftTests/Pods-SignalR-SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9B048FC932F5933F9447DCE /* Pods-SignalRSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalRSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalRSwift/Pods-SignalRSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C91154621E24113F007C0DD9 /* WebSocketTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketTransport.swift; sourceTree = "<group>"; };
@@ -134,6 +142,17 @@
 			path = ServerSentEvents;
 			sourceTree = "<group>";
 		};
+		84FF886C2019CD6500AFB4E4 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				84FF886D2019CD6500AFB4E4 /* ProtoBufHubProxy.swift */,
+				84FF886E2019CD6500AFB4E4 /* SignalRMessage.proto.swift */,
+				84FF886F2019CD6500AFB4E4 /* ProtoBufHubConnection.swift */,
+				84FF88712019CD6500AFB4E4 /* ProtoBufHubProxyProtocol.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		C4B90292188059B3970F0902 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +214,7 @@
 		C9330B2A1E1FE59A00B1F2D5 /* SignalR-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				84FF886C2019CD6500AFB4E4 /* Custom */,
 				C9B9229B1E295A78007C2266 /* Extensions */,
 				C911545F1E23D205007C0DD9 /* Models */,
 				C9E1C9F61E1FEEBE00335B1E /* Client */,
@@ -373,7 +393,6 @@
 				TargetAttributes = {
 					C9330B271E1FE59A00B1F2D5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8Z35TU97D6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -462,7 +481,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BE9A67E61EA448B742E04260 /* [CP] Copy Pods Resources */ = {
@@ -510,7 +529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -524,6 +543,7 @@
 				C91154731E2566DC007C0DD9 /* HubConnection.swift in Sources */,
 				C9B9229D1E295AD7007C2266 /* String+Dictionary.swift in Sources */,
 				C9E1CA061E1FFADA00335B1E /* HeartbeatMonitor.swift in Sources */,
+				84FF88732019CD6500AFB4E4 /* SignalRMessage.proto.swift in Sources */,
 				568A771B1F223CF0004F5D1C /* ServerSentEvent.swift in Sources */,
 				C911546C1E255CB2007C0DD9 /* ExceptionHelper.swift in Sources */,
 				568A77191F223CB2004F5D1C /* ChunkBuffer.swift in Sources */,
@@ -543,10 +563,13 @@
 				563B87161F1FA11100D75CEF /* ServerSentEventsTransport.swift in Sources */,
 				C9E1CA081E1FFB0C00335B1E /* ConnectionProtocol.swift in Sources */,
 				C91154681E243082007C0DD9 /* ReceivedMessage.swift in Sources */,
+				84FF88742019CD6500AFB4E4 /* ProtoBufHubConnection.swift in Sources */,
 				C9FC2D991E23BC600027FE59 /* ConnectionDelegate.swift in Sources */,
 				C91154751E256721007C0DD9 /* HubProxy.swift in Sources */,
 				C91154631E24113F007C0DD9 /* WebSocketTransport.swift in Sources */,
 				C911547B1E256F98007C0DD9 /* HubInvocation.swift in Sources */,
+				84FF88762019CD6500AFB4E4 /* ProtoBufHubProxyProtocol.swift in Sources */,
+				84FF88722019CD6500AFB4E4 /* ProtoBufHubProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +699,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8Z35TU97D6;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -699,7 +722,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8Z35TU97D6;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

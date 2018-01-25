@@ -182,7 +182,6 @@
 				TargetAttributes = {
 					C9E64D6B1E27DC3300DEDC20 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8Z35TU97D6;
 						ProvisioningStyle = Automatic;
 					};
 					C9E64D7F1E27DC3400DEDC20 = {
@@ -496,7 +495,7 @@
 			baseConfigurationReference = C61CCEAF90DA9573CAF2F41D /* Pods-SignalR-Swift-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8Z35TU97D6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "SignalR-Swift-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.autosoftdms.SignalR-Swift-Example";
@@ -510,7 +509,7 @@
 			baseConfigurationReference = 793E4C03DAB6B7009192E2EF /* Pods-SignalR-Swift-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8Z35TU97D6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "SignalR-Swift-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.autosoftdms.SignalR-Swift-Example";
