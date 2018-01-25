@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 import Alamofire
 
 public class LongPollingTransport: HttpTransport {
@@ -70,15 +69,15 @@ public class LongPollingTransport: HttpTransport {
         ]
 
         if let queryString = connection.queryString {
-            for key in queryString.keys {
-                parameters[key] = queryString[key]
+            for (key, value) in queryString {
+                parameters[key] = value
             }
         }
 
         let encodedRequest = connection.getRequest(url: url, httpMethod: .get, encoding: URLEncoding.default, parameters: parameters, timeout: 240)
 
         _ = self.pollingQueue.sync {
-            encodedRequest.validate().responseJSON(completionHandler: { [weak self, weak connection] response in
+            encodedRequest.validate().responseData(completionHandler: { [weak self, weak connection] response in
                 guard let strongSelf = self, let strongConnection = connection else { return }
 
                 switch response.result {
