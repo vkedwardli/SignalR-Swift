@@ -15,6 +15,7 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
     private var hubs = [String: ProtoBufHubProxy]()
     private var callbacks = [String: HubConnectionHubResultClosure]()
     private var callbackId = UInt.min
+    public var printTraffic: Bool = false
 
     public init(withUrl url: String,
                 queryString: [String: String]? = nil,
@@ -102,13 +103,15 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
 //        }
 //
 //        super.didReceiveData(data: data)
-        
         if let base64String = data as? String {
             if let encodedData = Data(base64Encoded: base64String),
                 let message = try? SignalRMessage.parseFrom(data: encodedData),
                 let method = message.m,
                 let argsString = message.d,
                 let argsDict = JSON(parseJSON: argsString).dictionaryObject {
+                if printTraffic {
+                    print("==========\nMethod = \(method)\nArgs = \(argsDict)\n")
+                }
                 for hub in self.hubs {
                     hub.value.invokeEvent(eventName: method, withArgs: argsDict)
                 }
