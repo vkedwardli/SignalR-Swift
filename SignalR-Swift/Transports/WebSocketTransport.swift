@@ -82,7 +82,8 @@ public class WebSocketTransport: HttpTransport, WebSocketDelegate {
             "connectionToken": connection?.connectionToken ?? "",
             "messageId": connection?.messageId ?? "",
             "groupsToken": connection?.groupsToken ?? "",
-            "connectionData": self.connectionInfo?.data ?? ""
+            "connectionData": self.connectionInfo?.data ?? "",
+            "clientProtocol": self.connectionInfo?.connection?.version.description ?? ""
         ]
 
         if let queryString = self.connectionInfo?.connection?.queryString {

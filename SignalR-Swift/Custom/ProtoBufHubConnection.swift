@@ -20,7 +20,7 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
     public init(withUrl url: String,
                 queryString: [String: String]? = nil,
                 sessionManager: SessionManager = .default,
-                useDefault: Bool = true) {
+                useDefault: Bool = false) {
         super.init(withUrl: HubConnection.getUrl(url: url, useDefault: useDefault),
                    queryString: queryString,
                    sessionManager: sessionManager)
@@ -37,6 +37,7 @@ public class ProtoBufHubConnection: Connection, HubConnectionProtocol {
         
         let proxy = ProtoBufHubProxy(connection: self, hubName: hubName)
         self.hubs[hubName] = proxy
+        self.version = Version(major: 1, minor: 5)
         return proxy
     }
     
