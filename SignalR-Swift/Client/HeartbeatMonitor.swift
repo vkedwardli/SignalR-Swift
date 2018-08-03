@@ -12,7 +12,7 @@ public final class HeartbeatMonitor {
 
     private(set) var hasBeenWarned = false
     private(set) var didTimeOut = false
-    private var timer: Timer?
+    private var timer: WeakRefTimer?
     private unowned let connection: ConnectionProtocol
 
     init(withConnection connection: ConnectionProtocol) {
@@ -24,11 +24,13 @@ public final class HeartbeatMonitor {
         self.hasBeenWarned = false
         self.didTimeOut = false
         if let interval = self.connection.keepAliveData?.checkInterval {
-            self.timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(heartBeat(_:)), userInfo: nil, repeats: true)
+            timer = WeakRefTimer(withInterval: interval, repeats: true) { [weak self] in
+                self?.heartBeat()
+            }
         }
     }
 
-    @objc func heartBeat(_ timer: Timer) {
+    @objc func heartBeat() {
         guard let lastKeepAlive = connection.keepAliveData?.lastKeepAlive else { return }
 
         let timeElapsed = Date().timeIntervalSince(lastKeepAlive)
